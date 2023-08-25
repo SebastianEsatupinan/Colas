@@ -2,24 +2,26 @@ package Vista;
 
 import Datos.Cliente;
 import Modelo.Cola;
+import Modelo.OperacionCola;
 
 
 public class TheMain {
 
     public static void main(String[] args) {
         
-        Cola<Cliente> colaP1 = new Cola<>();
-        
-        colaP1.encolar(new Cliente("Sebas" ,"418435 ", 456778));
-        colaP1.encolar(new Cliente("Nata ","46543 ", 1325213));
-        colaP1.encolar(new Cliente("Daniel ","123443 ", 65433));
-        colaP1.encolar(new Cliente("Jorge ","87643 ", 987544));
-        
-        System.out.println("Cola Original \n" + colaP1.toString());
-        
-        colaP1.desencolar();
-        
-        System.out.println("Cola Modificada \n" + colaP1.toString());
+        Cola<Cliente> colaOriginal = new Cola<>();
+        colaOriginal.encolar(new Cliente("sebas", "3456", 1500));
+        colaOriginal.encolar(new Cliente("nata", "2233", 2000));
+        colaOriginal.encolar(new Cliente("alex", "5678", 2500));
+        System.out.println("Cola Original " + colaOriginal.toString());
+
+        Cola<Cliente> colaDuplicada = OperacionCola.duplicarCola(colaOriginal);
+        System.out.println("Cola Duplicada " + colaDuplicada.toString());
+
+        colaOriginal.desencolar();
+        System.out.println("Pila Original modificada " + colaOriginal.toString());
+        System.out.println("Pila Duplicada " + colaDuplicada.toString());
+        Cola<Cliente> colaOriginalP = new Cola<>();
     }
     
 }

@@ -22,6 +22,10 @@ public class Cola <T extends Base>{
         return tope.isEmpty();
     }
      
+    public boolean estaVacia(){
+       return tope.isEmpty();
+    }
+     
      @Override
     public String toString() {
         
