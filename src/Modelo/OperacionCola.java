@@ -35,9 +35,9 @@ public class OperacionCola {
         return colaResultado;
     }
 
-    public static <T extends Base> Cola<T> colaResultado2(Cola<T> pilaOriginal) {
+    public static <T extends Base> Cola<T> colaResultado2(Cola<T> colaOriginal) {
 
-        Cola<T> colaDuplicada = duplicarCola(pilaOriginal);
+        Cola<T> colaDuplicada = duplicarCola(colaOriginal);
         Cola<T> colaResultado = new Cola<>();
         int indice = 0;
         while (!colaDuplicada.estaVacia()) {
