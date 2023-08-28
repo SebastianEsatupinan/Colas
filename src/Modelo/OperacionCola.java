@@ -1,7 +1,10 @@
 package Modelo;
 
+import Datos.Estudiante;
+
 public class OperacionCola {
-    public static <T extends Base> Cola<T> duplicarCola (Cola<T> colaOriginal){
+
+    public static <T extends Base> Cola<T> duplicarCola(Cola<T> colaOriginal) {
         Cola<T> colaAux = new Cola<>();
         Cola<T> colaDuplicada = new Cola<>();
         while (!colaOriginal.estaVacia()) {
@@ -16,20 +19,35 @@ public class OperacionCola {
         }
         return colaDuplicada;
     }
-    
-     public static <T extends Base> Cola<T> colaResultado(Cola<T> pilaOriginal) {
 
-        Cola<T> pilaDuplicada =duplicarCola(pilaOriginal);
-        Cola<T> pilaResultado = new Cola<>();
-        int indice=0;
-        while (!pilaDuplicada.estaVacia()) {  
-            T elemeneto=pilaDuplicada.desencolar();
-            if(indice % 2 ==0){
-                pilaResultado.encolar(elemeneto);
+    public static <T extends Base> Cola<T> colaResultado(Cola<T> colaOriginal) {
+
+        Cola<T> colaDuplicada = duplicarCola(colaOriginal);
+        Cola<T> colaResultado = new Cola<>();
+        while (!colaDuplicada.estaVacia()) {
+            T elemento = colaDuplicada.desencolar();
+            Estudiante objE = (Estudiante) elemento;
+            String carrera = objE.getCarrera();
+            if (carrera.contains("Ingeniero")) {
+                colaResultado.encolar(elemento);
+            }
+        }
+        return colaResultado;
+    }
+
+    public static <T extends Base> Cola<T> colaResultado2(Cola<T> pilaOriginal) {
+
+        Cola<T> colaDuplicada = duplicarCola(pilaOriginal);
+        Cola<T> colaResultado = new Cola<>();
+        int indice = 0;
+        while (!colaDuplicada.estaVacia()) {
+            T elemeneto = colaDuplicada.desencolar();
+            if (indice % 2 != 0) {
+                colaResultado.encolar(elemeneto);
             }
             indice++;
         }
 
-        return pilaResultado;
+        return colaResultado;
     }
 }
